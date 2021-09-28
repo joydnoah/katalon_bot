@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  katalon-agent:
+    image: "katalonstudio/agent"
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      SERVER_URL: https://analytics.katalon.com
+      KATALON_USERNAME: john@pycon.co
+      AGENT_NAME: my_docker_agent
+      TEAM_ID: 72614
+      KATALON_API_KEY: 75bc2be8-ca09-4e04-bbbb-f61a4f4e47fb
+    volumes:
+      - katalon-runtime-engines:/root/.katalon
+
+volumes:
+  katalon-runtime-engines:
